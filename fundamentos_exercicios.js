@@ -34,8 +34,8 @@ function convert24to12(horaFormato24) {
   if (hora <= 23 && hora >= 12 && minuto <= 59) {
     return hora - 12 + ":" + String(minuto).padStart(2, "0") + " PM";
   } else {
-    return hora + ":" + String(minuto).padStart(2, "0") + " PM";
+    return hora + ":" + String(minuto).padStart(2, "0") + " AM";
   }
 }
 
-console.log(convert24to12("14:23"));
+console.log(convert24to12("18:23"));
