@@ -174,20 +174,30 @@ cumprimentar("Sandro", function () {
  * O Async Await não bloqueia a thread principal do JavaScript.
  */
 
-const promessa3 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("Valor obtido"), 2000);
-});
+// const promessa3 = new Promise((resolve, reject) => {
+//   setTimeout(() => resolve("Valor obtido"), 2000);
+// });
 
-async function obterValor() {
-  const valor = await promessa3;
-  console.log(valor);
-}
+// async function obterValor() {
+//   const valor = await promessa3;
+//   console.log(valor);
+// }
 
-obterValor() // chamado primeiro que o "blabla"
-console.log("blabla") //"blabla" é exibido, enquanto obterValor
-                      // espera
+// obterValor() // chamado primeiro que o "blabla"
+// console.log("blabla") //"blabla" é exibido, enquanto obterValor
+//                       // espera
 
 // JSON (Javascript Object Notation)
 // Estrutura com "chave":"valor"
 // Padroniza a comunicação entre frontend e backend
-// Parei aqui.
+const objeto = { nome: "João", idade: 30 }; // Cria objeto
+const jsonString = JSON.stringify(objeto); // Transforma em json
+console.log(jsonString); // Envia para uma api, por exemplo
+
+// Como seria ao receber de uma api?
+const json = '{"nome":"João", "idade":30}'; // Recebe um json
+const objeto2 = JSON.parse(json); // transforma em um objeto
+
+console.log(objeto2)
+console.log(`Nome: ${objeto2.nome}`)
+console.log(`Idade: ${objeto2.idade}`)
