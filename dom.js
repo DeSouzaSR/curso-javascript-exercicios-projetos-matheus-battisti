@@ -78,4 +78,67 @@ novoElemento.textContent = "Minha div de JavaScript";
 console.log(novoElemento);
 document.body.appendChild(novoElemento);
 
-// Parei aqui. O autor ia começar a falar em Eventos
+//////////// Eventos//////////
+// Parte fundamental do DOM
+
+// Click
+const botao = document.querySelector("button");
+botao.addEventListener("click", function () {
+  console.log("Botão clicado!");
+});
+
+// Mouse
+const element5 = document.querySelector("#meuFormulario");
+element5.addEventListener("mouseover", function () {
+  console.log("O mouse passou aqui!");
+});
+
+// Teclado
+const campoInput = document.querySelector("#meuInput");
+campoInput.addEventListener("keydown", function () {
+  console.log("Tecla pressionada!");
+});
+
+// Formulário
+// Há uma observação. Quando clickamos em enviar o formulário,
+//   a página é atualizada. Para evitar isso, e ver a mensagem
+//   no console, usamos o preventDefault(). Isto pode ser usado,
+//   por exemplo, para validação de JavaScript.
+
+const form = document.querySelector("form");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  console.log("Form enviado");
+});
+
+// Propagação de eventos (problemas. É algo a ser evitado, com o stopPropagation())
+
+// document.querySelector("#elementoPai").addEventListener("click", function () {
+//   console.log("Click capturado do pai");
+// });
+
+// Do jeito que está acima, o elemento filho também captura o click. Para evitar isso
+//   usamos o stopPropagation
+
+document
+  .querySelector("#elementoFilho")
+  .addEventListener("click", function (event) {
+    //event.stopPropagation(); // comentado para executar a delegação de eventos
+    console.log("Elemento Filho");
+  });
+
+// Fazendo o link deixar de funcionar com o preventDefault()
+document.querySelector("#meuLink").addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log("Clickou no link, mas não foi redirecionado");
+});
+
+// Delegação de eventos
+// O elemento captura o evento mas o aciona em outro
+document
+  .querySelector("#elementoPai")
+  .addEventListener("click", function (event) {
+    if (event.target.matches(".classeDosFilhos")) {
+      console.log("Evento delegado do pai para o filho");
+    }
+  });
